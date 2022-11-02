@@ -1,0 +1,101 @@
+package com.example.grid1;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+public class MainActivity extends AppCompatActivity {
+
+String oldNumber=&quot;&quot;;
+String op=&quot;+&quot;;
+boolean isNewOp= true;
+EditText ed1;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+ed1=findViewById(R.id.ed1h);
+}
+public void NumberEvent(View view) {
+if(isNewOp)
+ed1.setText(&quot;&quot;);
+isNewOp=false;
+
+String number=ed1.getText().toString();
+switch (view.getId()){
+case R.id.bu1:
+number +=&quot;1&quot;;
+break;
+case R.id.bu2:
+number +=&quot;2&quot;;
+break;
+case R.id.bu3:
+number +=&quot;3&quot;;
+break;
+case R.id.bu4:
+number +=&quot;4&quot;;
+break;
+case R.id.bu5:
+number +=&quot;5&quot;;
+break;
+case R.id.bu6:
+
+number +=&quot;6&quot;;
+break;
+case R.id.bu7:
+number +=&quot;7&quot;;
+break;
+case R.id.bu8:
+number +=&quot;8&quot;;
+break;
+case R.id.bu9:
+number +=&quot;9&quot;;
+break;
+case R.id.bu0:
+number +=&quot;0&quot;;
+break;
+case R.id.bu1clr:
+number =&quot;&quot;;
+break;
+}
+ed1.setText(number);
+}
+public void OperatorEvent(View view) {
+isNewOp= true;
+oldNumber=ed1.getText().toString();
+switch(view.getId())
+{
+case R.id.budivide:
+op=&quot;/&quot;;
+break;
+case R.id.bumul:
+op=&quot;*&quot;;
+break;
+case R.id.buminus:
+op=&quot;-&quot;;
+break;
+case R.id.buplus:
+op=&quot;+&quot;;
+break;
+
+}
+}
+public void EqualEvent(View view) {
+String newNumber=ed1.getText().toString();
+double result=0.0;
+switch (op){
+case &quot;+&quot;:
+result=Double.parseDouble(oldNumber)+Double.parseDouble(newNumber);
+break;
+case &quot;-&quot;:
+result=Double.parseDouble(oldNumber)-Double.parseDouble(newNumber);
+break;
+case &quot;/&quot;:
+result=Double.parseDouble(oldNumber)/Double.parseDouble(newNumber);
+break;
+case &quot;*&quot;:
+result=Double.parseDouble(oldNumber)*Double.parseDouble(newNumber);
+break;
+}
+ed1.setText(result+&quot;&quot;);
+}
+}
