@@ -1,0 +1,61 @@
+xml code
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/tomandjerry" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="699dp"
+        app:srcCompat="@drawable/tom" />
+</FrameLayout>
+
+
+
+
+java code
+
+package com.example.framewithtoggle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.ImageViewCompat;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+ImageView a1,a2;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        a1=findViewById(R.id.imageView4);
+        a2=findViewById(R.id.imageView5);
+        a1.setOnClickListener(this::OnClick);
+        a2.setOnClickListener(this::OnClick);
+    }
+
+    private void OnClick(View view) {
+        if(view.getId()==R.id.imageView5){
+            a2.setVisibility(view.GONE);
+            a1.setVisibility(view.VISIBLE);
+        }
+        else{
+            a2.setVisibility(view.VISIBLE);
+            a1.setVisibility(view.GONE);
+        }
+    }
+}
